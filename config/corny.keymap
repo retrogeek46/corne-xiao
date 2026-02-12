@@ -3,6 +3,17 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+        behaviors {
+        scroll_encoder: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+            tap-ms = <20>;
+        };
+    };
+};
+
+/ {
         keymap {
                 compatible = "zmk,keymap";
 
@@ -13,8 +24,7 @@
                                 &kp LSHFT  &kp Z      &kp X      &kp C      &kp V      &kp B      &kp C_MUTE  &kp C_PP    &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp ESC
                                                                  &kp SPACE  &mo 1      &kp LALT                           &kp BSPC   &mo 2      &kp LGUI
                         >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_DN PG_UP>;
+                        sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP &scroll_encoder SCRL_DOWN SCRL_UP>;
                 };
                 NUM {
                         bindings = <
@@ -23,8 +33,7 @@
                                 &kp LSHFT  &kp N0     &kp N1     &kp N2     &kp N3     &kp B      &kp C_MUTE  &kp C_MUTE  &none      &kp F1     &kp F2     &kp F3     &kp F4     &kp ESC
                                                                  &kp SPACE  &mo 0      &kp LALT                           &kp BSPC   &mo 2      &kp LGUI
                         >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
+                        sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP &scroll_encoder SCRL_DOWN SCRL_UP>;
                 };
                 SYM {
                         bindings = <
@@ -33,8 +42,7 @@
                                 &kp LSHFT  &kp UNDER  &kp PLUS   &kp LT     &kp GT      &none      &kp C_MUTE  &kp K_SLEEP  &none      &kp LG(LS(S)) &none      &none      &none      &kp ESC
                                                                  &kp SPACE   &mo 1       &kp LALT                            &kp BSPC   &mo 0         &kp LGUI
                         >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_DN PG_UP>;
+                        sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP &scroll_encoder SCRL_DOWN SCRL_UP>;
                 };
         };
 };
